@@ -10,38 +10,66 @@ import AVFAudio
 
 
 struct ContentView: View {
-@State private var sounds = ["schafe", "lowe", "schwein", "wolf", "rhino"]
+    @State private var sounds = ["schafe", "lowe", "schwein", "wolf", "rhino"]
+    @State private var prevSoundName = ""
+    @State private var soundName: String = "sound0"
+    @State private var audioPlayer: AVAudioPlayer?
+
     var body: some View {
-        VStack{
+        VStack {
             Spacer()
             Button("Sheep") {
-                print("ONE")
+                play(soundNamed: "schafe")
             }
             .padding()
             Button("Lion") {
-                print("TWO")
+                play(soundNamed: "lowe")
             }
             .padding()
             Button("Pig") {
-                print("THREE")
+                play(soundNamed: "schwein")
             }
             .padding()
             Button("Wolf") {
-                print("FOUR")
+                play(soundNamed: "wolf")
             }
             .padding()
             Button("Rhino") {
-                print("FIVE")
+                play(soundNamed: "rhino")
             }
             .padding()
             Button("Random") {
-                print("RAND")
+                playRandom()
             }
             .padding()
             Spacer()
-
         }
         .buttonStyle(.glassProminent)
+    }
+
+    private func playRandom() {
+        // Choose a random sound different from the previous one
+        var candidate = sounds.randomElement() ?? ""
+        if sounds.count > 1 {
+            while candidate == prevSoundName {
+                candidate = sounds.randomElement() ?? ""
+            }
+        }
+        prevSoundName = candidate
+        play(soundNamed: candidate)
+    }
+
+    private func play(soundNamed name: String) {
+        guard let soundFile = NSDataAsset(name: name) else {
+            print("I cannot read the file called \(name)")
+            return
+        }
+        do {
+            audioPlayer = try AVAudioPlayer(data: soundFile.data)
+            audioPlayer?.play()
+        } catch {
+            print("ERROR: \(error.localizedDescription)!")
+        }
     }
 }
 

@@ -47,14 +47,12 @@ struct ContentView: View {
         .buttonStyle(.glassProminent)
     }
 
-    private func playRandom() {
+    func playRandom() {
         // Choose a random sound different from the previous one
-        var candidate = sounds.randomElement() ?? ""
-        if sounds.count > 1 {
+        var candidate = sounds[(Int.random(in: 0...sounds.count-1))]
             while candidate == prevSoundName {
                 candidate = sounds.randomElement() ?? ""
             }
-        }
         prevSoundName = candidate
         play(soundNamed: candidate)
     }

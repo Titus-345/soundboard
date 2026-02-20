@@ -51,7 +51,7 @@ struct ContentView: View {
         // Choose a random sound different from the previous one
         var candidate = sounds[(Int.random(in: 0...sounds.count-1))]
             while candidate == prevSoundName {
-                candidate = sounds.randomElement() ?? ""
+                candidate = sounds[(Int.random(in: 0...sounds.count-1))]
             }
         prevSoundName = candidate
         play(soundNamed: candidate)

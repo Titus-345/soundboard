@@ -6,16 +6,42 @@
 //
 
 import SwiftUI
+import AVFAudio
+
 
 struct ContentView: View {
+@State private var sounds = ["schafe", "lowe", "schwein", "wolf", "rhino"]
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        VStack{
+            Spacer()
+            Button("Sheep") {
+                print("ONE")
+            }
+            .padding()
+            Button("Lion") {
+                print("TWO")
+            }
+            .padding()
+            Button("Pig") {
+                print("THREE")
+            }
+            .padding()
+            Button("Wolf") {
+                print("FOUR")
+            }
+            .padding()
+            Button("Rhino") {
+                print("FIVE")
+            }
+            .padding()
+            Button("Random") {
+                print("RAND")
+            }
+            .padding()
+            Spacer()
+
         }
-        .padding()
+        .buttonStyle(.glassProminent)
     }
 }
 

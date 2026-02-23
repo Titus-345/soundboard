@@ -54,6 +54,7 @@ struct ContentView: View {
                 Spacer()
             }
             .buttonStyle(.glassProminent)
+            .tint(.black)
         }
     }
 

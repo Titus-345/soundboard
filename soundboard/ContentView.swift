@@ -19,6 +19,7 @@ struct ContentView: View {
         ZStack {
             Image(.backdrop)
                 .resizable()
+                .ignoresSafeArea()
             VStack {
                 Spacer()
                 Button("Sheep") {

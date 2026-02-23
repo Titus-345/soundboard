@@ -22,6 +22,11 @@ struct ContentView: View {
                 .ignoresSafeArea()
             VStack {
                 Spacer()
+                Text("SUPER SOUND PLAYER")
+                    .frame(width: 300)
+                    .font(Font.largeTitle.bold())
+                    .multilineTextAlignment(.center)
+                Divider()
                 Button("Sheep") {
                     play(soundNamed: "schafe")
                 }

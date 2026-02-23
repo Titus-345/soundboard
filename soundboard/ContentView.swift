@@ -16,35 +16,39 @@ struct ContentView: View {
     @State private var audioPlayer: AVAudioPlayer?
 
     var body: some View {
-        VStack {
-            Spacer()
-            Button("Sheep") {
-                play(soundNamed: "schafe")
+        ZStack {
+            Image(.backdrop)
+                .resizable()
+            VStack {
+                Spacer()
+                Button("Sheep") {
+                    play(soundNamed: "schafe")
+                }
+                .padding()
+                Button("Lion") {
+                    play(soundNamed: "lowe")
+                }
+                .padding()
+                Button("Pig") {
+                    play(soundNamed: "schwein")
+                }
+                .padding()
+                Button("Wolf") {
+                    play(soundNamed: "wolf")
+                }
+                .padding()
+                Button("Rhino") {
+                    play(soundNamed: "rhino")
+                }
+                .padding()
+                Button("Random") {
+                    playRandom()
+                }
+                .padding()
+                Spacer()
             }
-            .padding()
-            Button("Lion") {
-                play(soundNamed: "lowe")
-            }
-            .padding()
-            Button("Pig") {
-                play(soundNamed: "schwein")
-            }
-            .padding()
-            Button("Wolf") {
-                play(soundNamed: "wolf")
-            }
-            .padding()
-            Button("Rhino") {
-                play(soundNamed: "rhino")
-            }
-            .padding()
-            Button("Random") {
-                playRandom()
-            }
-            .padding()
-            Spacer()
+            .buttonStyle(.glassProminent)
         }
-        .buttonStyle(.glassProminent)
     }
 
     func playRandom() {

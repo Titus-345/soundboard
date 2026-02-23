@@ -26,7 +26,12 @@ struct ContentView: View {
                     .frame(width: 300)
                     .font(Font.largeTitle.bold())
                     .multilineTextAlignment(.center)
-                Divider()
+                Spacer().frame(height: 30)
+                Image(systemName: "pawprint")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 100)
+                Spacer().frame(height: 30)
                 Button("Sheep") {
                     play(soundNamed: "schafe")
                 }
